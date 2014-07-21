@@ -14,7 +14,7 @@ import com.example.models.Muster;
  *
  */
 public class AMSCore implements IAMSCore {
-
+	//
 	public Person Authenticate() {
 		throw new UnsupportedOperationException();
 
@@ -56,16 +56,41 @@ public class AMSCore implements IAMSCore {
 	currentMuster.setActive(false)
 	}
 
+	
 	public Muster GetMusterStatus() {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException();
 	}
+		//check if muster is active 
+		//check the
+		//
 
 	public void ReportIn(MusterStatus status) {
 		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException();	
+	}
+	
+	//check if report is null
+	//check if Person reported in
+	//check if Person responded back
+	
+	if (report == null){
+		throw new IllegalArgumentException("report was null.");
+	}
+	
+	if (Person reported in){
+		throw new IllegalArgumentException("Person has reported in.");
+	}
+		
+		if (Person responded back){
+			throw new IllegalArgumentException("Person has responded back."
+			};
 	}
 
+	if (MusterStatus == null){
+		throw new IllegalArgumentException("MusterStatus is null.");	
+		}
+		 
 	public Person GetPeronByID(int id) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException();
