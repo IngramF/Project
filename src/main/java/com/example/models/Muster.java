@@ -3,6 +3,8 @@
  */
 package com.example.models;
 
+import java.util.ArrayList;
+
 public class Muster {
 	
 	private String message;
@@ -33,11 +35,20 @@ public class Muster {
 	private String date;
 	private String time;
 	private String who;
+	
+	private ArrayList<MusterStatus> statuses;
+	
 	private boolean staus;
 	public boolean isStaus() {
 		return staus;
 	}
 	public void setStaus(boolean staus) {
 		this.staus = staus;
+	}
+	public ArrayList<MusterStatus> getStatuses() {
+		return statuses;
+	}
+	public void setStatuses(ArrayList<MusterStatus> statuses) {
+		this.statuses = statuses;
 	} 
 }
