@@ -6,6 +6,24 @@ package com.example.models;
 import java.util.ArrayList;
 
 public class Person {
+	
+	
+	public Person(String firstName)
+	{
+		this.firstName = firstName;
+	}
+	public Person(String lastName)
+	{
+		this.lastName = lastName;
+	}
+	public Person(String idNumber)
+	{
+		this.idNumber = idNumber;
+	}
+	public Person(boolean isSupervisor)
+	{
+		this.isSupervisor = isSupervisor;
+	}
 	private String pin;
  	public String getPin() {
 		return pin;
