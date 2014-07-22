@@ -3,24 +3,10 @@
  */
 package com.example.models;
 
+import java.util.ArrayList;
+
 public class Muster {
 	
-	public Muster(String date)
-	{
-		this.date = date;
-	}
-	public Muster(String time)
-	{
-		this.time = time;
-	}
-	public Muster(String who)
-	{
-		this.who = who;
-	}
-	public (boolean status)
-	{
-		this.status = status;
-	}
 	private String message;
 	public String getMessage() {
 		return message;
@@ -49,11 +35,20 @@ public class Muster {
 	private String date;
 	private String time;
 	private String who;
-	private boolean status;
-	public boolean isStatus() {
-		return status;
+	
+	private ArrayList<MusterStatus> statuses;
+	
+	private boolean staus;
+	public boolean isStaus() {
+		return staus;
 	}
-	public void setStaus(boolean status) {
-		this.status = status;
+	public void setStaus(boolean staus) {
+		this.staus = staus;
+	}
+	public ArrayList<MusterStatus> getStatuses() {
+		return statuses;
+	}
+	public void setStatuses(ArrayList<MusterStatus> statuses) {
+		this.statuses = statuses;
 	} 
 }

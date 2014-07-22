@@ -14,15 +14,13 @@ import com.example.models.Muster;
  *
  */
 public class AMSCore implements IAMSCore {
+	//
+	public Person Authenticate() {
+		throw new UnsupportedOperationException();
+
+	}
 
 	public void Muster(Person initiator, String message) {
-		//Check to make sure person is not null
-		
-		//And that the person is a supervisor
-		
-		//and that the message is not null, or empty
-		
-		
 		throw new UnsupportedOperationException();
 		// TODO Auto-generated method stub
 
@@ -55,45 +53,50 @@ public class AMSCore implements IAMSCore {
 	{
 		throw new IllegalArgumentException("There is no muster to cancel right now");
 	}
-	currentMuster.setActive(false);
+	currentMuster.setActive(false)
 	}
 
 	
 	public Muster GetMusterStatus() {
-		//return the current muster
-	
-		
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException();
 	}
+		//check if muster is active 
+		//check the
+		//
 
 	public void ReportIn(MusterStatus status) {
-		//Is the status object null?
-		
-		//is the status's person null
-		
-		//Is the status's person on our list of people ?
-		
-		//Is the status's statusCode valid?
-		
-		//add the person's status to the muster
-				
-		
 		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException();
+		throw new UnsupportedOperationException();	
+	}
+	
+	//check if report is null
+	//check if Person reported in
+	//check if Person responded back
+	
+	if (report == null){
+		throw new IllegalArgumentException("report was null.");
+	}
+	
+	if (Person reported in){
+		throw new IllegalArgumentException("Person has reported in.");
+	}
+		
+		if (Person responded back){
+			throw new IllegalArgumentException("Person has responded back."
+			};
 	}
 
+	if (MusterStatus == null){
+		throw new IllegalArgumentException("MusterStatus is null.");	
+		}
+		 
 	public Person GetPeronByID(int id) {
-		//Look through the list of people, and return the first one with
-		//a matching ID number 
-		
-		
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException();
 	}
 
 	public List<Person> GetPeople() {
-		//return all the people in the people list
 		throw new UnsupportedOperationException();
 	}
 

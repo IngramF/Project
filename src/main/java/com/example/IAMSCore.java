@@ -11,12 +11,7 @@ import com.example.models.Muster;
  * @author matthewgalligan
  *
  */
-public interface IAMSCore {
-	/***
-	 * Authenticate the current user, return the user, or Null if unauthenticated
-	 * @return
-	 */
-	Person Authenticate();
+public interface IAMSCore {	
 	/***
 	 * Create a new muster, Authenticated users only
 	 */

@@ -1,0 +1,10 @@
+package com.example.models;
+
+public class Phone {
+private String phoneNumber;
+boolean isSMS;
+public Phone(String phonenum)
+{
+
+}
+}
