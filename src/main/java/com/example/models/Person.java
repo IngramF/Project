@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Person {
 	
 	
-	public Person (String firstName, String lastName, Integer idNumber)
+	public Person (String firstName, String lastName, Integer idNumber,boolean isSupervisor)
 	{
 			
 	}
@@ -35,10 +35,10 @@ public class Person {
 	public void setSupervisor(boolean isSupervisor) {
 		this.isSupervisor = isSupervisor;
 	}
-	public Integer getIdNumber() {
+	public int getIdNumber() {
 		return idNumber;
 	}
-	public void setIdNumber(Integer idNumber) {
+	public void setIdNumber(int idNumber) {
 		this.idNumber = idNumber;
 	}
 	public String getLastName() {
@@ -55,7 +55,7 @@ public class Person {
 	}
 	private ArrayList phoneNumbers = new ArrayList<Phone>();
  	private boolean isSupervisor;
- 	private Integer idNumber;
+ 	private int idNumber;
  	private String lastName;
  	private String firstName;
  	

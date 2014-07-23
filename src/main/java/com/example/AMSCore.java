@@ -86,7 +86,7 @@ import com.example.models.Muster;
 		//Is the status object null?
 		
 		//is the status's person null?
-		//sadads
+
 		//Is the status's person on our list of people ?
 		
 		//Is the status's statusCode valid?
@@ -117,22 +117,31 @@ import com.example.models.Muster;
 		}
 
 		currentMuster.AddStatus(status);
-		
+		{
+			throw new IllegalArgumentException("The Status is vaild");
+		}
+
 		
 	}
 
 	public Person GetPersonByID(int id) {
 		//Look through the list of people, and return the first one with
-		//a matching ID number 
+		//a matching ID number
 		
+		for(Person person : people)
+		{
+			if(person.getIdNumber() == id)
+			{
+			return person;
+			}
+		}
 		
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException();
+		return null;
 	}
 
 	public List<Person> GetPeople() {
 		//return all the people in the people list
-		throw new UnsupportedOperationException();
+		throw new IllegalArgumentException("The list of people.");
 	}
 
 	/***
@@ -149,8 +158,22 @@ import com.example.models.Muster;
 		// initialize people list, and put some default data in here.
 		people = new ArrayList<Person>();
 
+		Person employee = new Person("John","Doe",001,true);
+		people.add(employee);
 		// We don't have a muster when AMS starts
 		currentMuster = null;
+		Person employee1 = new Person("Bob","Wilson",002,false);
+		people.add(employee1);
+		Person employee2 = new Person("Angelia","Jones",003,false);
+		people.add(employee2);
+		Person employee3 = new Person("Brandy","Marshall",004,true);
+		people.add(employee3);
+		Person employee4 = new Person("Rick","Barry",005,false);
+		people.add(employee4);
+		Person employee5 = new Person("Mary","Thomas",006,true);
+		people.add(employee5);
 	}
+	
+	
 
 }
