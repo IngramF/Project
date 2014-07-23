@@ -27,6 +27,7 @@ public interface IAMSCore {
 	
 	/***
 	 * Report someone's muster status.
+	 * @return 
 	 */
 	void ReportIn(MusterStatus status);
 	/***

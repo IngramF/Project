@@ -8,27 +8,19 @@ import java.util.ArrayList;
 public class Person {
 	
 	
-	public Person(String firstName)
+	public Person (String firstName, String lastName, Integer idNumber)
 	{
-		this.firstName = firstName;
-	}
-	public Person(String lastName)
-	{
-		this.lastName = lastName;
-	}
-	public Person(String idNumber)
-	{
-		this.idNumber = idNumber;
+			
 	}
 	public Person(boolean isSupervisor)
 	{
 		this.isSupervisor = isSupervisor;
 	}
-	private String pin;
- 	public String getPin() {
+	private Integer pin;
+ 	public Integer getPin() {
 		return pin;
 	}
-	public void setPin(String pin) {
+	public void setPin(Integer pin) {
 		this.pin = pin;
 	}
 	public ArrayList getPhoneNumbers() {
@@ -43,10 +35,10 @@ public class Person {
 	public void setSupervisor(boolean isSupervisor) {
 		this.isSupervisor = isSupervisor;
 	}
-	public String getIdNumber() {
+	public Integer getIdNumber() {
 		return idNumber;
 	}
-	public void setIdNumber(String idNumber) {
+	public void setIdNumber(Integer idNumber) {
 		this.idNumber = idNumber;
 	}
 	public String getLastName() {
@@ -63,7 +55,7 @@ public class Person {
 	}
 	private ArrayList phoneNumbers = new ArrayList<Phone>();
  	private boolean isSupervisor;
- 	private String idNumber;
+ 	private Integer idNumber;
  	private String lastName;
  	private String firstName;
  	

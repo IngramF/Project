@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.example.models.MusterStatus;
@@ -13,20 +14,34 @@ import com.example.models.Muster;
  * @author matthewgalligan
  *
  */
-public class AMSCore implements IAMSCore {
+	public class AMSCore implements IAMSCore {
 
-	public void Muster(Person initiator, String message) {
+	public void Muster(Person initiator,String message) {
+		
+		// TODO Auto-generated method stub
+		
 		//Check to make sure person is not null
 		
 		//And that the person is a supervisor
 		
 		//and that the message is not null, or empty
 		
-		
-		throw new UnsupportedOperationException();
-		// TODO Auto-generated method stub
-
-	}
+		if (initiator == null) {
+		throw  new IllegalArgumentException("Muster is not null");
+		}
+		if (!initiator.isSupervisor())
+		{
+			throw new IllegalArgumentException("The person is a supervisor");
+		}
+		if (message == null || message == "") {
+			throw new IllegalArgumentException("The message is not null");
+		}
+	
+		if(this.currentMuster !=null &&this.currentMuster.isStatus()){
+			throw new IllegalArgumentException("Can't start a muster becuase one is already active.");
+		}
+		this.currentMuster = new Muster(message,new Date(),initiator,true);
+		}
 
 	public void Cancel(Person canceller) {
 		// TODO Auto-generated method stub
@@ -44,20 +59,20 @@ public class AMSCore implements IAMSCore {
 			throw new IllegalArgumentException("Canceller was null.");
 		}
 		if(!canceller.isSupervisor())
-			{
+		{
 			throw new IllegalArgumentException("The person is not a supervisor.");
-			}
+		}
 		if(currentMuster == null)
 		{
 		throw new IllegalArgumentException("There is no current muster.");
 		}
-	if(!currentMuster.isActive())
-	{
+		if(!currentMuster.isActive())
+		{
 		throw new IllegalArgumentException("There is no muster to cancel right now");
-	}
-	currentMuster.setActive(false);
-	}
-
+		}
+		currentMuster.setActive(false);
+		}
+	
 	
 	public Muster GetMusterStatus() {
 		//return the current muster
@@ -67,23 +82,46 @@ public class AMSCore implements IAMSCore {
 		throw new UnsupportedOperationException();
 	}
 
-	public void ReportIn(MusterStatus status) {
+		public void ReportIn(MusterStatus status) {
 		//Is the status object null?
 		
-		//is the status's person null
-		
+		//is the status's person null?
+		//sadads
 		//Is the status's person on our list of people ?
 		
 		//Is the status's statusCode valid?
 		
 		//add the person's status to the muster
-				
 		
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException();
+		
+		if (status == null)
+		{
+			throw new IllegalArgumentException("MusterStatus was null.");
+		}
+		if (status.getPerson() == null)
+		{
+		throw new IllegalArgumentException("Person is null.");
+		}
+		boolean foundPerson = false;
+		for(Person person : people)
+		{
+			if(person == status.getPerson())
+			{
+				foundPerson = true;
+			}
+		}
+		
+		if (!foundPerson )
+		{
+			throw new IllegalArgumentException("That Person is on our list");
+		}
+
+		currentMuster.AddStatus(status);
+		
+		
 	}
 
-	public Person GetPeronByID(int id) {
+	public Person GetPersonByID(int id) {
 		//Look through the list of people, and return the first one with
 		//a matching ID number 
 		
