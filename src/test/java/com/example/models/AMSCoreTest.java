@@ -15,12 +15,7 @@ public class AMSCoreTest {
 		AMSCore core = new AMSCore();
 		List<Person> people = core.GetPeople();
 		
-		assertNotNull("People should not be null.",people);
-		//I should get some people back
-		assertTrue(people.size() > 0);
-		
-		//We will test actual name later
-	 
+	
 	}
 	@Test
 	public void TestGetPersonByID()
@@ -36,6 +31,7 @@ public class AMSCoreTest {
 		assertEquals(person.isSupervisor(),true);
 		assertEquals(person.getIdNumber(),1);
 	}
+	
 	
 	//Should fail cancelling with no muster, and no person
 	@Test(expected=IllegalArgumentException.class)

@@ -137,13 +137,15 @@ import com.example.models.Muster;
 		}
 		
 		return null;
+		
 	}
+	
 
 	public List<Person> GetPeople() {
 		//return all the people in the people list
-		throw new IllegalArgumentException("The list of people.");
+		return people;
 	}
-
+	
 	/***
 	 * This is the internal list of people. This will use a database or etc in a
 	 * full implementation.
@@ -156,22 +158,7 @@ import com.example.models.Muster;
 
 	public AMSCore() {
 		// initialize people list, and put some default data in here.
-		people = new ArrayList<Person>();
-
-		Person employee = new Person("John","Doe",001,true);
-		people.add(employee);
-		// We don't have a muster when AMS starts
-		currentMuster = null;
-		Person employee2 = new Person("Bob","Wilson",002,false);
-		people.add(employee2);
-		Person employee3 = new Person("Angelia","Jones",003,false);
-		people.add(employee3);
-		Person employee4 = new Person("Brandy","Marshall",004,true);
-		people.add(employee4);
-		Person employee5 = new Person("Rick","Barry",005,false);
-		people.add(employee5);
-		Person employee6 = new Person("Mary","Thomas",006,true);
-		people.add(employee6);
+		
 	}
 	
 	

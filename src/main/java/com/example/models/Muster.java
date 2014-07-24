@@ -32,6 +32,9 @@ public class Muster {
 		this.status = status;
 		
 		this.statuses = new ArrayList<MusterStatus>();
+		
+		
+		
 				
 	}
 	private String message;

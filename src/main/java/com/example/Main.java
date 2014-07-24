@@ -4,6 +4,7 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 import com.example.models.Person;
+import java.util.*;
 
 /**
  *
@@ -50,14 +51,32 @@ public class Main {
     	AMSCore core = new AMSCore();
     	
     	
-    	Person samplePerson = new Person("Test","Person",999,false);
-    	System.out.println(samplePerson);
     	
-    	   	
+    	
+    	
+    	List<Person> employeeList = new ArrayList<Person>();
+    	
+    	Person samplePerson = new Person("Test","Person",999,false);
+    	
+    	employeeList.add(samplePerson);
+    	
+    	employeeList.add(new Person("Jim","Doe",2,false));
+    	employeeList.add(new Person("Tom","Tomlison",3,true));
+    	employeeList.add(new Person("Mary","Thomas",4,true));
+    	employeeList.add(new Person("Samsun", "Jackson" ,5, false));
+    	employeeList.add(new Person("Reginald", "Pierce",6,false));
+    	employeeList.add(new Person("Becky", "Anderson",7,false));
+    	employeeList.add(new Person("Ann", "Louis",8,true));
+    	employeeList.add(new Person("Micheal", "Knight",88,false));
+    	employeeList.add(new Person("Johnny", "James", 14, true ));
+    	for (Person pp : employeeList)
+    		System.out.println(pp);
+    	
+    	/*  	
     	for(Person person : core.GetPeople()){
     		System.out.println(person);
     	}
-    	
+    	*/
     	
     }
 
