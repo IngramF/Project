@@ -6,7 +6,19 @@ package com.example.models;
 import java.util.ArrayList;
 
 public class Person {
-	
+	@Override
+	public  String toString()
+	{
+		return "===========================\n" +
+			   "Person Class:\n" +
+			   "===========================\n" +
+			   "ID Number " + idNumber + "\n" +
+			   "First Name: " + firstName + "\n" +
+			   "Last Name: " + lastName + "\n" +
+			   "Is Supervisor: " + isSupervisor + "\n";
+			   
+			   
+	}
 	
 	public Person (String firstName, String lastName, Integer idNumber,boolean isSupervisor)
 	{

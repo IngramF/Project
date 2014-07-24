@@ -7,6 +7,21 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Muster {
+	
+	@Override
+	public  String toString()
+	{
+		return "===========================\n" +
+			   "Muster Class:\n" + 
+			   "===========================\n" +
+			   "Initiator Name: " + who.getFirstName() + " " + who.getLastName() + "\n" +
+			   "Date: " + date + "\n" +
+			   "Message: " + message + "\n" +
+			   "Status: " + status + "\n";
+			   
+			   
+	}
+	
 	public Muster(String message, Date date, Person who, boolean status){
 		this.message = message;
 	

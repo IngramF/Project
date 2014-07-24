@@ -22,7 +22,21 @@ public class AMSCoreTest {
 		//We will test actual name later
 	 
 	}
-
+	@Test
+	public void TestGetPersonByID()
+	{
+		AMSCore core = new AMSCore();
+		Person person = core.GetPersonByID(-1);
+		assertNull(person);
+		person = core.GetPersonByID(88);
+		assertNull(person);
+		person = core.GetPersonByID(1);
+		assertEquals(person.getFirstName(),"John");
+		assertEquals(person.getLastName(),"Doe");
+		assertEquals(person.isSupervisor(),true);
+		assertEquals(person.getIdNumber(),1);
+	}
+	
 	//Should fail cancelling with no muster, and no person
 	@Test(expected=IllegalArgumentException.class)
 	public void TestCancel()

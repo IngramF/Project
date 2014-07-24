@@ -3,6 +3,8 @@ package com.example;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 
+import com.example.models.Person;
+
 /**
  *
  * This class launches the web application in an embedded Jetty container.
@@ -16,6 +18,7 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) throws Exception{
+    	/*
         String webappDirLocation = "src/main/webapp/";
 
         // The port that we should run on can be set into an environment variable
@@ -43,6 +46,19 @@ public class Main {
 
         server.start();
         server.join();
+        */
+    	AMSCore core = new AMSCore();
+    	
+    	
+    	Person samplePerson = new Person("Test","Person",999,false);
+    	System.out.println(samplePerson);
+    	
+    	   	
+    	for(Person person : core.GetPeople()){
+    		System.out.println(person);
+    	}
+    	
+    	
     }
 
 }
