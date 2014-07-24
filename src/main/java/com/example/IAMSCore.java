@@ -35,7 +35,7 @@ public interface IAMSCore {
 	 * @param id Numeric ID of the person
 	 * @return
 	 */
-	Person GetPeronByID(int id);
+	Person GetPersonByID(int id);
 	
 	/***
 	 * Return all people in the system, so that a user can select themselves by ID

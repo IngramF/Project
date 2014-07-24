@@ -162,16 +162,16 @@ import com.example.models.Muster;
 		people.add(employee);
 		// We don't have a muster when AMS starts
 		currentMuster = null;
-		Person employee1 = new Person("Bob","Wilson",002,false);
-		people.add(employee1);
-		Person employee2 = new Person("Angelia","Jones",003,false);
+		Person employee2 = new Person("Bob","Wilson",002,false);
 		people.add(employee2);
-		Person employee3 = new Person("Brandy","Marshall",004,true);
+		Person employee3 = new Person("Angelia","Jones",003,false);
 		people.add(employee3);
-		Person employee4 = new Person("Rick","Barry",005,false);
+		Person employee4 = new Person("Brandy","Marshall",004,true);
 		people.add(employee4);
-		Person employee5 = new Person("Mary","Thomas",006,true);
+		Person employee5 = new Person("Rick","Barry",005,false);
 		people.add(employee5);
+		Person employee6 = new Person("Mary","Thomas",006,true);
+		people.add(employee6);
 	}
 	
 	
