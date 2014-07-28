@@ -1,5 +1,5 @@
 package com.example;
-
+import com.example.models.Muster;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 
@@ -48,7 +48,7 @@ public class Main {
         server.start();
         server.join();
         */
-    	AMSCore core = new AMSCore();
+    	AMSCore core;
     	
     	
     	
@@ -56,7 +56,7 @@ public class Main {
     	
     	List<Person> employeeList = new ArrayList<Person>();
     	
-    	Person samplePerson = new Person("Test","Person",999,false);
+    	Person samplePerson = new Person("Test","Person",999,true);
     	
     	employeeList.add(samplePerson);
     	
@@ -69,15 +69,24 @@ public class Main {
     	employeeList.add(new Person("Ann", "Louis",8,true));
     	employeeList.add(new Person("Micheal", "Knight",88,false));
     	employeeList.add(new Person("Johnny", "James", 14, true ));
-    	for (Person pp : employeeList)
-    		System.out.println(pp);
+    	//for (Person pp : employeeList)
+    	//	System.out.println(pp);
     	
-    	/*  	
-    	for(Person person : core.GetPeople()){
-    		System.out.println(person);
-    	}
-    	*/
+    	
+    	core = new AMSCore(employeeList);
+    	 	
+    	//for(Person person : core.GetPeople()){
+    	//	System.out.println(person);
+    	//}
+    	
+    	Muster testMuster = core.GetMusterStatus();
+    	
+    	core.Muster(samplePerson, "Please Report Your Status.");
+    	core.GetMusterStatus();
+
     	
     }
+    
+    
 
 }

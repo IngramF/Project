@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Muster {
+	private ArrayList<MusterStatus> statuses;
+	private Date date;
+	private Person who;
+	private boolean status;
+	private String message;
 	
 	@Override
 	public  String toString()
@@ -32,12 +37,13 @@ public class Muster {
 		this.status = status;
 		
 		this.statuses = new ArrayList<MusterStatus>();
-		
-		
-		
 				
 	}
-	private String message;
+	
+	public Muster() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getMessage() {
 		return message;
 	}
@@ -57,12 +63,7 @@ public class Muster {
 	public void setWho(Person who) {
 		this.who = who;
 	}
-	private Date date;
-	private Person who;
 	
-	private ArrayList<MusterStatus> statuses;
-	
-	private boolean status;
 	public boolean isStatus() {
 		return status;
 	}
@@ -86,8 +87,7 @@ public class Muster {
 	}
 	
 	public boolean isActive() {
-		// TODO Auto-generated method stub
-		return false;
+		return status;
 	}
 	public void setActive(boolean b) {
 		// TODO Auto-generated method stub

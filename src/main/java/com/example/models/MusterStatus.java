@@ -6,6 +6,27 @@ package com.example.models;
  *
  */
 public class MusterStatus {
+	/***
+	 * Who has mustered
+	 */
+	private Person person;
+	/***
+	 * Status of muster
+	 */
+	private StatusCodes status;
+	
+	/***
+	 * Possible options for status codes
+	 * @author matthewgalligan
+	 *
+	 */
+	public enum StatusCodes
+	{
+		WORK,
+		HOME,
+		TDY		
+	}
+	
 	@Override
 	public  String toString()
 	{
@@ -23,26 +44,6 @@ public class MusterStatus {
 		person = inPerson;
 		status = inStatus;
 	}
-	
-	/***
-	 * Possible options for status codes
-	 * @author matthewgalligan
-	 *
-	 */
-	public enum StatusCodes
-	{
-		WORK,
-		HOME,
-		TDY		
-	}
-	/***
-	 * Who has mustered
-	 */
-	private Person person;
-	/***
-	 * Status of muster
-	 */
-	private StatusCodes status;
 	
 	public Person getPerson() {
 		return person;
