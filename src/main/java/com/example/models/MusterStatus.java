@@ -34,9 +34,7 @@ public class MusterStatus {
 			   "MusterStatus Class:\n" +
 			   "===========================\n" +
 			   "Person Name " + person.getFirstName() + " " + person.getLastName() + "\n" +
-			   "Status: " + status + "\n";
-			   
-			   
+			   "Status: " + status + "\n";	   
 	}
 	
 	public MusterStatus(Person inPerson, StatusCodes inStatus)

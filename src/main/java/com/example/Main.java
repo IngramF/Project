@@ -1,5 +1,6 @@
 package com.example;
 import com.example.models.Muster;
+import com.example.models.MusterStatus;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 
@@ -69,6 +70,7 @@ public class Main {
     	employeeList.add(new Person("Ann", "Louis",8,true));
     	employeeList.add(new Person("Micheal", "Knight",88,false));
     	employeeList.add(new Person("Johnny", "James", 14, true ));
+    	employeeList.add(new Person("Micheal", "Upshaw",-99,false));
     	//for (Person pp : employeeList)
     	//	System.out.println(pp);
     	
@@ -80,8 +82,12 @@ public class Main {
     	//}
     	
     	Muster testMuster = core.GetMusterStatus();
-    	
+    	System.out.println("\n---------------------\n");
     	core.Muster(samplePerson, "Please Report Your Status.");
+    	
+    	MusterStatus testMusterPerson = new MusterStatus(core.GetPersonByID(6), MusterStatus.StatusCodes.WORK);
+    	core.ReportIn(testMusterPerson);
+    	
     	core.GetMusterStatus();
 
     	

@@ -16,7 +16,7 @@ import com.example.models.Muster;
  */
 public class AMSCore implements IAMSCore {
 	/***
-	 * This is the internal list of people. This will use a database or etc in a
+	 * This is the internal list of people. This will use a database or etc8 in a
 	 * full implementation.
 	 */
 	private List<Person> employeeList;
@@ -41,7 +41,8 @@ public class AMSCore implements IAMSCore {
 		// And that the person is a supervisor
 
 		// and that the message is not null, or empty
-
+		
+		
 		if (initiator == null) {
 			throw new IllegalArgumentException("Muster is not null");
 		}
@@ -93,21 +94,28 @@ public class AMSCore implements IAMSCore {
 
 	public Muster GetMusterStatus() {
 		// return the current muster
-		Person musterBy;
+		Person musterBy, tempPerson;
 		Date startMusterDate;		
+		ArrayList<MusterStatus> statuses;
+		
 		System.out.println("CURRENT MUSTER STATUS:");
 		if (currentMuster.isActive())
 		{
 			System.out.println("There is an active Mustering");
 			musterBy = currentMuster.getWho();
-			System.out.println("Muster started by: " + musterBy.getFirstName() + " " + musterBy.getLastName());
+			System.out.println("Muste"
+						+ "r started by: " + musterBy.getFirstName() + " " + musterBy.getLastName());
 			startMusterDate = currentMuster.getdate();
 			System.out.println("Muster started on: " + startMusterDate.toString());
 			System.out.println("Muster message: " + currentMuster.getMessage());
 			System.out.println("Employee status");
-			for(Person person : employeeList){
-	    		System.out.println(person);
+			
+			statuses = currentMuster.getStatuses();
+			for(MusterStatus stat : statuses)
+			{
+			    System.out.println(stat);
 			}
+			
 		}
 		else
 		{
@@ -128,7 +136,8 @@ public class AMSCore implements IAMSCore {
 		// Is the status's statusCode valid?
 
 		// add the person's status to the muster
-
+		
+		
 		if (status == null) {
 			throw new IllegalArgumentException("MusterStatus was null.");
 		}
@@ -148,7 +157,7 @@ public class AMSCore implements IAMSCore {
 
 		currentMuster.AddStatus(status);
 		{
-			throw new IllegalArgumentException("The Status is vaild");
+
 		}
 
 	}
