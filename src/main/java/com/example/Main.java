@@ -49,6 +49,7 @@ public class Main {
         server.start();
         server.join();
         */
+    	
     	AMSCore core;
     	
     	
@@ -58,9 +59,10 @@ public class Main {
     	List<Person> employeeList = new ArrayList<Person>();
     	
     	Person samplePerson = new Person("Test","Person",999,true);
+    	Person sampleBoss = new Person("Cancel","Boss",9,true);
     	
     	employeeList.add(samplePerson);
-    	
+    	employeeList.add(sampleBoss);
     	employeeList.add(new Person("Jim","Doe",2,false));
     	employeeList.add(new Person("Tom","Tomlison",3,true));
     	employeeList.add(new Person("Mary","Thomas",4,true));
@@ -81,15 +83,21 @@ public class Main {
     	//	System.out.println(person);
     	//}
     	
-    	Muster testMuster = core.GetMusterStatus();
+    	core.GetMusterStatus();
     	System.out.println("\n---------------------\n");
-    	core.Muster(samplePerson, "Please Report Your Status.");
+    	
     	
     	MusterStatus testMusterPerson = new MusterStatus(core.GetPersonByID(6), MusterStatus.StatusCodes.WORK);
+
     	core.ReportIn(testMusterPerson);
     	
     	core.GetMusterStatus();
-
+    	
+    	core.Cancel(sampleBoss);
+    	
+    	MusterStatus testMusterPerson2 = new MusterStatus(core.GetPersonByID(4), MusterStatus.StatusCodes.TDY);
+    	core.ReportIn(testMusterPerson2);
+    	core.GetMusterStatus();
     	
     }
     

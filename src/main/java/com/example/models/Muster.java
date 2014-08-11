@@ -40,10 +40,7 @@ public class Muster {
 				
 	}
 	
-	public Muster() {
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	public String getMessage() {
 		return message;
 	}
@@ -92,6 +89,7 @@ public class Muster {
 	public void setActive(boolean b) {
 		// TODO Auto-generated method stub
 		
+		this.status = b;
 	} 
 
 }

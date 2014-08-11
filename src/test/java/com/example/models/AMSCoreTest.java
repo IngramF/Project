@@ -2,10 +2,13 @@ package com.example.models;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
 import org.junit.Assert;
+
 import com.example.AMSCore;
 
 public class AMSCoreTest {
@@ -17,19 +20,145 @@ public class AMSCoreTest {
 		
 	
 	}
+	
+	
+	public AMSCore Setup()
+	{
+	AMSCore core;
+    	
+    	
+    	
+    	
+    	
+    	List<Person> employeeList = new ArrayList<Person>();
+    	
+    	Person samplePerson = new Person("Test","Person",999,true);
+    	Person sampleBoss = new Person("Cancel","Boss",9,true);
+    	
+    	employeeList.add(samplePerson);
+    	employeeList.add(sampleBoss);
+    	employeeList.add(new Person("Jim","Doe",2,false));
+    	employeeList.add(new Person("Tom","Tomlison",3,true));
+    	employeeList.add(new Person("Mary","Thomas",4,true));
+    	employeeList.add(new Person("Samsun", "Jackson" ,5, false));
+    	employeeList.add(new Person("Reginald", "Pierce",6,false));
+    	employeeList.add(new Person("Becky", "Anderson",7,false));
+    	employeeList.add(new Person("Ann", "Louis",8,true));
+    	employeeList.add(new Person("Micheal", "Knight",88,false));
+    	employeeList.add(new Person("Johnny", "James", 14, true ));
+    	employeeList.add(new Person("Micheal", "Upshaw",-99,false));
+    	
+    	//for (Person pp : employeeList)
+    	//	System.out.println(pp);
+    	
+    	
+    	core = new AMSCore(employeeList);
+    	return core;
+	}
+	
+	//Test that an employee can report in, and that his/her status it here
+	@Test 
+	public void TestReportIn2(){		
+		AMSCore core = Setup();
+	}
+	
+	//Test that our boss can cancel, but no one else can
+		@Test 
+		public void TestCancel2(){		
+			//Then try to cancel with The boss
+			
+			AMSCore core = Setup();
+			DoMuster(core);
+			Person sampleBoss = core.GetPersonByID(9);
+			System.out.println("Canceling current Muster");
+			core.Cancel(sampleBoss);
+			Muster muster = core.GetMusterStatus();		
+			assertEquals(false, muster.isActive());
+			
+			
+			//create a muster
+	//		DoMuster(core);
+		//	Person sampleBoss = core.GetPersonByID(9);
+			//core.Muster(sampleBoss, "What is your current status?");
+			//Muster muster = core.GetMusterStatus();
+	
+			
+		}
+
+		private void DoMuster(AMSCore core) {
+			Person samplePerson = core.GetPersonByID(999);
+			core.Muster(samplePerson, "Please Report Your Status.");
+	    	Muster muster = core.GetMusterStatus();
+		}
+		
+		//Test that no one can report in when there is no muster
+		@Test(expected=IllegalArgumentException.class) 
+		public void TestReportInNoMuster(){		
+			AMSCore core = Setup();
+			MusterStatus testMusterPerson2 = new MusterStatus(core.GetPersonByID(4), MusterStatus.StatusCodes.TDY);
+	    	core.ReportIn(testMusterPerson2);												
+	    	
+	    	{
+				throw new IllegalArgumentException("There is no muster to cancel.");
+			}
+			
+		}
+	
+	@Test
+	public void TestRightNumberOfEmployees()
+	{
+		AMSCore core = Setup();
+		//Make sure the size is what we expect
+		core.GetPeople().size();
+		assertEquals(12,core.GetPeople().size());
+		
+		
+	}
+	
+	
+	@Test
+	public void TestDidMyMusterWork()
+	{
+		AMSCore core = Setup();
+		DoMuster(core);
+		assertEquals(core.GetMusterStatus().getMessage(),"Please Report Your Status.");
+    	
+		Date when = core.GetMusterStatus().getdate();
+		Date now = new Date();
+		
+		//check the date is the same
+		assertEquals(when.getDay(),now.getDay());
+		assertEquals(when.getYear(),now.getYear());
+		Person samplePerson = core.GetPersonByID(999);
+		Muster muster = core.GetMusterStatus();
+		assertEquals(samplePerson,muster.getWho());
+		assertEquals(muster.isActive(),true);
+	}
+	
+	@Test
+	public void TestIsDefaultMusterCancelled()
+	{
+		AMSCore core = Setup();
+		Muster muster = core.GetMusterStatus();
+		assertEquals(muster.isActive(),false);
+	}
+	
 	@Test
 	public void TestGetPersonByID()
 	{
-		AMSCore core = new AMSCore();
+		
+		AMSCore core = Setup();
+		//Try a bad number
 		Person person = core.GetPersonByID(-1);
 		assertNull(person);
-		person = core.GetPersonByID(88);
+		//Try another number that doesn't exist
+		person = core.GetPersonByID(818);
 		assertNull(person);
-		person = core.GetPersonByID(1);
-		assertEquals(person.getFirstName(),"John");
+		person = core.GetPersonByID(2);
+		assertEquals(person.getFirstName(),"Jim");
 		assertEquals(person.getLastName(),"Doe");
-		assertEquals(person.isSupervisor(),true);
-		assertEquals(person.getIdNumber(),1);
+		assertEquals(person.isSupervisor(),false);
+		assertEquals(person.getIdNumber(),2);
 	}
 	
 	
@@ -38,7 +167,7 @@ public class AMSCoreTest {
 	public void TestCancel()
 	{
 		AMSCore core = new AMSCore();
-		core.Cancel(null);
+		core.Cancel(null);		
 	}
 	//Should fail mustering with no authenticated person
 	@Test(expected=IllegalArgumentException.class)

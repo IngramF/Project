@@ -26,13 +26,18 @@ public class AMSCore implements IAMSCore {
 	private Muster currentMuster;
 	
 	
+	public AMSCore()
+	{
+		employeeList = new ArrayList<Person>();
+		currentMuster = new Muster("No Muster", new Date(),null ,false);
+	}
 	public AMSCore(List<Person> peopleList) {
 		// initialize people list, and put some default data in here.
 		employeeList = peopleList;
-		currentMuster = new Muster();
+		currentMuster = new Muster("No Muster", new Date(),null ,false);
 	}
 
-	public void Muster(Person initiator, String message) {
+	public void Muster(Person person, String message) {
 
 		// TODO Auto-generated method stub
 
@@ -43,11 +48,11 @@ public class AMSCore implements IAMSCore {
 		// and that the message is not null, or empty
 		
 		
-		if (initiator == null) {
+		if (person == null) {
 			throw new IllegalArgumentException("Muster is not null");
 		}
 
-		if (!initiator.isSupervisor()) {
+		if (!person.isSupervisor()) {
 			throw new IllegalArgumentException("The person is a supervisor");
 		}
 
@@ -60,7 +65,7 @@ public class AMSCore implements IAMSCore {
 					"Can't start a muster becuase one is already active.");
 		}
 
-		this.currentMuster = new Muster(message, new Date(), initiator, true);
+		this.currentMuster = new Muster(message, new Date(), person, true);
 
 	}
 
@@ -103,8 +108,7 @@ public class AMSCore implements IAMSCore {
 		{
 			System.out.println("There is an active Mustering");
 			musterBy = currentMuster.getWho();
-			System.out.println("Muste"
-						+ "r started by: " + musterBy.getFirstName() + " " + musterBy.getLastName());
+			System.out.println("Muster"+ "r started by: " + musterBy.getFirstName() + " " + musterBy.getLastName());
 			startMusterDate = currentMuster.getdate();
 			System.out.println("Muster started on: " + startMusterDate.toString());
 			System.out.println("Muster message: " + currentMuster.getMessage());
@@ -157,7 +161,7 @@ public class AMSCore implements IAMSCore {
 
 		currentMuster.AddStatus(status);
 		{
-
+	
 		}
 
 	}
