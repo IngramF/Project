@@ -2,6 +2,9 @@
 <Say voice="alice">
 This is the AMS System. There is an active Muster. Please report your status.
 </Say>
+<Gather action="handle-user-input.php" numDigits="1">
+        
+    
 <Pause length="2"/>
 <Say voice="alice">
 Press One for AT WORK
@@ -13,4 +16,8 @@ Press Three for IN TRANSIT
 Press Four for OTHER
 <Pause length="1"/>
 </Say>
+</Gather>
+<Say>Sorry, I didn't get your response.</Say
+<Pause length="2">
+<Redirect>twilioscript.xml</Redirect>
 </Response>
