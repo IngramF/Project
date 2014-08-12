@@ -68,6 +68,41 @@
             $('#rest-client-tab').click();
         }
 
+        function SendStartMusterRequest()
+        {
+        	SendMusterRequest('/services/ams/startmuster');
+        }
+        function SendCancelMusterRequest()
+        {
+        	SendMusterRequest('/services/ams/cancelmuster');
+        }
+
+		function SendMusterRequest(url) {
+			var postData = 
+			{
+				id:$("#musterID").val(),
+				message:$("#musterMessage").val()
+			};
+            $.ajax({
+                url:url,
+                dataType:'json',
+                data: postData,
+                type:'POST',
+                context:document.body,
+                success:function (data, textStatus, jqXHR) {
+                    showRestResults('Success', 'alert-success', JSON.stringify(data, undefined, 2));
+                },
+                error:function (qXHR, textStatus, errorThrown) {
+                    if (errorThrown instanceof SyntaxError) {
+                        errorThrown = errorThrown.message;
+                    }
+
+                    showRestResults(textStatus, 'alert-error', errorThrown);
+                }
+            });
+        }
+
+
         function sendGetRequest() {
             $.ajax({
                 url:$('#rest-url').val(),
@@ -141,7 +176,8 @@
     <li class="active"><a id="eclipse-instructions-tab" href="#eclipse-instructions" data-toggle="tab">Use Eclipse
         3.7</a></li>
     <li><a id="cli-instructions-tab" href="#cli-instructions" data-toggle="tab">Use Command Line</a></li>
-    <li><a id="rest-client-tab" href="#rest-client" data-toggle="tab">Example REST Client</a></li>
+    <li><a id="rest-client-tab" href="#rest-client" data-toggle="tab">AMS Client</a></li>
+    
 </ul>
 
 <div class="tab-content">
@@ -459,15 +495,37 @@ import java.util.TimeZone;
 </div>
 <!-- End CLI tab -->
 
+
+
 <div id="rest-client" class="tab-pane">
-    <h1>REST Client</h1>
+    <h1>AMS Client</h1>
 
     <div id="rest-client-widget" style="margin: 10px">
         <form class="form-horizontal" class="row-fluid">
             <fieldset>
                 <label class="control-label search-query" for="rest-url"><strong>URL</strong></label>
-                <input id="rest-url" type="text" value="/services/time">
+                <input id="rest-url" type="text" value="/services/ams/status">
                 <button type="submit" class="btn btn-primary" onclick="sendGetRequest(); return false;">GET</button>
+            </fieldset>
+        </form>
+<hr>
+          <form class="form-horizontal" class="row-fluid">
+	        
+           		<div class="form-group">
+               	<label class="control-label search-query" for="musterID">Person ID</label> <input id="musterID"  type="text" value="3" >
+               	</div>
+               	<div class="form-group">
+               	<label class="control-label search-query" for="musterID">Muster Message</label> 
+               	<input id="musterMessage"  type="text" value="Foo" >              
+               	</div>
+               	<div class="form-group">
+          		<label class="control-label search-query" for="rest-url"><strong>Start Muster</strong></label>            
+           		<button type="submit" class="btn btn-primary" onclick="SendStartMusterRequest(); return false;">POST</button>                
+           		</div>
+           			<div class="form-group">
+          		<label class="control-label search-query" for="rest-url"><strong>Cancel Muster</strong></label>            
+           		<button type="submit" class="btn btn-primary" onclick="SendCancelMusterRequest(); return false;">POST</button>                
+           		</div>
             </fieldset>
         </form>
 
@@ -485,6 +543,8 @@ import java.util.TimeZone;
         </div>
     </div>
 </div>
+
+
 <!-- end Rest Client tab -->
 
 </div>
