@@ -102,6 +102,31 @@
             });
         }
 
+        	function SendReportInRequest() {
+			var postData = 
+			{
+				id:$("#reportinID").val(),
+				message:$("#reportinStatus").val()
+			};
+            $.ajax({
+                url:'/services/ams/report',
+                dataType:'json',
+                data: postData,
+                type:'PUT',
+                context:document.body,
+                success:function (data, textStatus, jqXHR) {
+                    showRestResults('Success', 'alert-success', JSON.stringify(data, undefined, 2));
+                },
+                error:function (qXHR, textStatus, errorThrown) {
+                    if (errorThrown instanceof SyntaxError) {
+                        errorThrown = errorThrown.message;
+                    }
+
+                    showRestResults(textStatus, 'alert-error', errorThrown);
+                }
+            });
+        }
+
 
         function sendGetRequest() {
             $.ajax({
@@ -526,6 +551,23 @@ import java.util.TimeZone;
           		<label class="control-label search-query" for="rest-url"><strong>Cancel Muster</strong></label>            
            		<button type="submit" class="btn btn-primary" onclick="SendCancelMusterRequest(); return false;">POST</button>                
            		</div>
+            </fieldset>
+        </form>
+        <hr>
+<!-- Report in -->
+         <form class="form-horizontal" class="row-fluid">
+	        
+           		<div class="form-group">
+               	<label class="control-label search-query" for="reportinID">Person ID</label> <input id="reportinID"  type="text" value="3" >
+               	</div>
+               	<div class="form-group">
+               	<label class="control-label search-query" for="reportinStatus">Muster Status</label> 
+               	<input id="reportinStatus"  type="text" value="0" >              
+               	</div>
+               	<div class="form-group">
+          		<label class="control-label search-query" for="rest-url"><strong>Report In</strong></label>            
+           		<button type="submit" class="btn btn-primary" onclick="SendReportInRequest(); return false;">POST</button>                
+           		</div>           		
             </fieldset>
         </form>
 
