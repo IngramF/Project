@@ -1,0 +1,12 @@
+<Response>
+<Say voice="alice">
+This is the AMS System. There is an active Muster. Please report your status.
+</Say>
+<Pause length="2"/>
+<Say voice="alice">
+Press One for AT WORK
+Press Two for AT HOME
+Press Three for IN TRANSIT
+Press Four for OTHER
+</Say>
+</Response>
