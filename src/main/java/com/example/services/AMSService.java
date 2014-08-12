@@ -73,8 +73,8 @@ public class AMSService {
     }
 
     @PUT
-    @Path("/report/{id}")
-    public MusterStatus reportIn(@PathParam("id") int employeeID, @FormParam("status") int statusIntValue)
+    @Path("/report")
+    public MusterStatus reportIn(@FormParam("id") int employeeID, @FormParam("status") int statusIntValue)
     {
     	AMSCore ams = GetAMSCore();
     
