@@ -12,7 +12,7 @@ import com.example.AMSCore;
 
 public class Person {
 	
-	private ArrayList phoneNumbers = new ArrayList<Phone>();
+	private ArrayList phoneNumbers;
  	private boolean isSupervisor;
  	private int idNumber;
  	private String lastName;
@@ -37,13 +37,11 @@ public class Person {
 		lastName  = lName;
 		idNumber = idNum;
 		isSupervisor = isBoss;
+		phoneNumbers = new ArrayList<Phone>();
 		
 	}
 	
-	public Person(boolean isSupervisor)
-	{
-		this.isSupervisor = isSupervisor;
-	}
+	
 	private Integer pin;
  	public Integer getPin() {
 		return pin;
@@ -51,10 +49,10 @@ public class Person {
 	public void setPin(Integer pin) {
 		this.pin = pin;
 	}
-	public ArrayList getPhoneNumbers() {
+	public ArrayList<Phone> getPhoneNumbers() {
 		return phoneNumbers;
 	}
-	public void setPhoneNumbers(ArrayList phoneNumbers) {
+	public void setPhoneNumbers(ArrayList<Phone> phoneNumbers) {
 		this.phoneNumbers = phoneNumbers;
 	}
 	public boolean isSupervisor() {

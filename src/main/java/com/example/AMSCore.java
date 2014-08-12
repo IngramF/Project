@@ -15,6 +15,9 @@ import com.cedarsoftware.util.io.JsonWriter;
 import com.example.models.MusterStatus;
 import com.example.models.Person;
 import com.example.models.Muster;
+import com.example.models.Phone;
+import com.example.TwilioCredentials;
+import com.twilio.sdk.TwilioRestException;
 
 /***
  * Standard AMS core implementation
@@ -47,6 +50,11 @@ public class AMSCore implements IAMSCore {
     	employeeList.add(new Person("Micheal", "Knight",88,false));
     	employeeList.add(new Person("Johnny", "James", 14, true ));
     	employeeList.add(new Person("Micheal", "Upshaw",-99,false));
+    	Person matt = new Person("Matt","G",101,true);
+    	Phone phone = new Phone("(215) 214-8118");
+    	matt.getPhoneNumbers().add(phone);
+    	employeeList.add(matt);
+    	
 		currentMuster = new Muster("No Muster", new Date(),null ,false);
 	}
 	
@@ -139,7 +147,23 @@ public class AMSCore implements IAMSCore {
 		}
 
 		this.currentMuster = new Muster(message, new Date(), person, true);
-
+		
+		//If I just mustered, call everybody.
+		
+		for(Person emp : this.GetPeople())
+		{
+			for(Phone phone : emp.getPhoneNumbers())
+			{
+				System.out.println("Calling " + phone.getPhoneNumber());
+				try {
+					TwilioCaller.MakeCall(phone.getPhoneNumber(), this.GetMusterStatus());
+				} catch (TwilioRestException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}			
+		
 	}
 
 	public void Cancel(Person canceller) {

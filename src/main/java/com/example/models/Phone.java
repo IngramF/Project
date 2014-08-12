@@ -10,7 +10,7 @@ public class Phone {
 	}
 
 	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+		this.phoneNumber = phoneNumber;		
 	}
 
 	public boolean isSMS() {
@@ -22,6 +22,6 @@ public class Phone {
 	}
 
 	public Phone(String phonenum) {
-
+		this.phoneNumber = phonenum;
 	}
 }

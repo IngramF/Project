@@ -45,6 +45,8 @@ public class AMSService {
         return ams.GetMusterStatus();
     }
 
+    
+    
     @POST
     @Path("/startmuster")
     public Muster startMuster(@FormParam("id") int personId, @FormParam("message") String message)
