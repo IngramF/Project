@@ -2,23 +2,21 @@
 <Say voice="alice">
 This is the AMS System. There is an active Muster. Please report your status.
 </Say>
-<Gather action="handle-user-input.php" numDigits="1">
-        
-    
-<Pause length="5"/>
-<Say voice="alice">
-Press One for AT WORK
-<Pause length="5"/>
-Press Two for AT HOME
-<Pause length="5"/>
-Press Three for IN TRANSIT
-<Pause length="5"/>
-Press Four for OTHER
-<Pause length="5"/>
-</Say>
+<Gather action="handle-user-input.php" numDigits="1" method="POST">
+        <Pause length="5"/>
+        <Say voice="alice">
+        Press One for AT WORK
+        <Pause length="5"/>
+        Press Two for AT HOME
+        <Pause length="5"/>
+        Press Three for IN TRANSIT
+        <Pause length="5"/>
+        Press Four for OTHER
+        <Pause length="5"/>
+        </Say>
 </Gather>
 <Pause length="10" />
 <Say>Sorry, I didn't get your response.</Say>
-<Pause length="5">
+<Pause length="5" />
 <Redirect>twilioscript.xml</Redirect>
 </Response>
