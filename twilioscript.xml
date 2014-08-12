@@ -4,19 +4,25 @@
 This is the AMS System. There is an active Muster. Please report your status.
 </Say>
 
+<Say>WOO WOO WOOO</Say>
+
         
         <Say voice="woman">
         Press One for AT WORK
         </Say>
+        <Pause length="2"/>
         <Say voice="woman">
         Press Two for AT HOME
         </Say>
+        <Pause length="10"/>
         <Say voice="woman">
         Press Three for IN TRANSIT
         </Say>
+        <Pause length="10"/>
         <Say voice="woman">
         Press Four for OTHER
         </Say>
+        <Pause length="10"/>
 <Gather timeout="10" finishOnKey="#">
 <Say voice="woman">
 Please enter your muster status.        
