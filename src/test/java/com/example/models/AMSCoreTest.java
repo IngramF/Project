@@ -37,16 +37,7 @@ public class AMSCoreTest {
     	
     	employeeList.add(samplePerson);
     	employeeList.add(sampleBoss);
-    	employeeList.add(new Person("Jim","Doe",2,false));
-    	employeeList.add(new Person("Tom","Tomlison",3,true));
-    	employeeList.add(new Person("Mary","Thomas",4,true));
-    	employeeList.add(new Person("Samsun", "Jackson" ,5, false));
-    	employeeList.add(new Person("Reginald", "Pierce",6,false));
-    	employeeList.add(new Person("Becky", "Anderson",7,false));
-    	employeeList.add(new Person("Ann", "Louis",8,true));
-    	employeeList.add(new Person("Micheal", "Knight",88,false));
-    	employeeList.add(new Person("Johnny", "James", 14, true ));
-    	employeeList.add(new Person("Micheal", "Upshaw",-99,false));
+    	
     	
     	//for (Person pp : employeeList)
     	//	System.out.println(pp);

@@ -1,9 +1,17 @@
 package com.example;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.cedarsoftware.util.io.JsonReader;
+import com.cedarsoftware.util.io.JsonWriter;
 import com.example.models.MusterStatus;
 import com.example.models.Person;
 import com.example.models.Muster;
@@ -29,12 +37,77 @@ public class AMSCore implements IAMSCore {
 	public AMSCore()
 	{
 		employeeList = new ArrayList<Person>();
+		employeeList.add(new Person("Jim","Doe",2,false));
+    	employeeList.add(new Person("Tom","Tomlison",3,true));
+    	employeeList.add(new Person("Mary","Thomas",4,true));
+    	employeeList.add(new Person("Samsun", "Jackson" ,5, false));
+    	employeeList.add(new Person("Reginald", "Pierce",6,false));
+    	employeeList.add(new Person("Becky", "Anderson",7,false));
+    	employeeList.add(new Person("Ann", "Louis",8,true));
+    	employeeList.add(new Person("Micheal", "Knight",88,false));
+    	employeeList.add(new Person("Johnny", "James", 14, true ));
+    	employeeList.add(new Person("Micheal", "Upshaw",-99,false));
 		currentMuster = new Muster("No Muster", new Date(),null ,false);
 	}
+	
+	
 	public AMSCore(List<Person> peopleList) {
 		// initialize people list, and put some default data in here.
 		employeeList = peopleList;
 		currentMuster = new Muster("No Muster", new Date(),null ,false);
+	}
+	public void Serialize(String fileName)
+	{
+		JsonWriter jw = null;
+		
+		try
+		{
+		FileOutputStream fout = new FileOutputStream(fileName);
+	    jw = new JsonWriter(fout);
+	    jw.write(this);
+	    
+		}
+	    catch(Exception e)
+	    {
+	    	e.printStackTrace();
+	    }
+		finally
+		{
+			if(jw != null)
+			{
+			 jw.close();
+			}
+		}
+	   
+	}
+	
+	public static AMSCore DeSerialize(String fileName)
+	{
+		 FileInputStream fin = null;
+		 JsonReader jr = null;
+		 
+		 AMSCore core = null;
+			try
+			{
+			fin = new FileInputStream(fileName);
+			jr = new JsonReader(fin);
+		   
+		    
+		    core = (AMSCore) jr.readObject();
+		    }
+		    catch(Exception e)
+		    {
+		    	e.printStackTrace();
+		    	core = new AMSCore();
+		    }
+			finally
+			{
+				if(jr != null)
+				{
+					jr.close();
+				}
+			}
+		    return core;
 	}
 
 	public void Muster(Person person, String message) {
@@ -57,7 +130,7 @@ public class AMSCore implements IAMSCore {
 		}
 
 		if (message == null || message == "") {
-			throw new IllegalArgumentException("The message is not null");
+			throw new IllegalArgumentException("The message is null");
 		}
 
 		if (this.currentMuster != null && this.currentMuster.isStatus()) {

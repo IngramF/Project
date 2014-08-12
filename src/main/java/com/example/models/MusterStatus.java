@@ -22,9 +22,21 @@ public class MusterStatus {
 	 */
 	public enum StatusCodes
 	{
-		WORK,
-		HOME,
-		TDY		
+		WORK(0),
+		HOME(1),
+		TDY(2);
+		
+		private final int value;
+		
+		public int getValue()
+		{
+			return value;
+		}
+		
+		private StatusCodes(int value)
+		{
+			this.value = value;
+		}
 	}
 	
 	@Override

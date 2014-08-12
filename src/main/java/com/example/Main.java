@@ -20,7 +20,7 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) throws Exception{
-    	/*
+    	
         String webappDirLocation = "src/main/webapp/";
 
         // The port that we should run on can be set into an environment variable
@@ -48,8 +48,8 @@ public class Main {
 
         server.start();
         server.join();
-        */
-    	
+        
+    	/*
     	AMSCore core;
     	
     	
@@ -98,7 +98,7 @@ public class Main {
     	MusterStatus testMusterPerson2 = new MusterStatus(core.GetPersonByID(4), MusterStatus.StatusCodes.TDY);
     	core.ReportIn(testMusterPerson2);
     	core.GetMusterStatus();
-    	
+    	*/
     }
     
     
