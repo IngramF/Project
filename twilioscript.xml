@@ -5,8 +5,12 @@ This is the AMS System. There is an active Muster. Please report your status.
 <Pause length="2"/>
 <Say voice="alice">
 Press One for AT WORK
+<Pause length="1"/>
 Press Two for AT HOME
+<Pause length="1"/>
 Press Three for IN TRANSIT
+<Pause length="1"/>
 Press Four for OTHER
+<Pause length="1"/>
 </Say>
 </Response>
