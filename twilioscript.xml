@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-<Say voice="woman">
+<Say voice="alice">
 This is the A M S System. There is an active Muster. Please report your status.
 </Say>
 
 
 
         
-        <Say voice="woman">
+        <Say voice="alice">
         Press One for AT WORK
         </Say>
         <Pause length="2"/>
-        <Say voice="woman">
+        <Say voice="alice">
         Press Two for AT HOME
         </Say>
         <Pause length="10"/>
-        <Say voice="woman">
+        <Say voice="alice">
         Press Three for IN TRANSIT
         </Say>
         <Pause length="10"/>
-        <Say voice="woman">
+        <Say voice="alice">
         Press Four for OTHER
         </Say>
         <Pause length="10"/>
 <Gather timeout="10" finishOnKey="#">
-<Say voice="woman">
+<Say voice="alice">
 Please enter your muster status.        
 </Say>
 </Gather>
-<Say voice="woman">Sorry, I didn't get your response.</Say>
+<Say voice="alice">Sorry, I didn't get your response.</Say>
 <Redirect method="GET">https://raw.githubusercontent.com/IngramF/Project/master/twilioscript.xml</Redirect>
 </Response>
