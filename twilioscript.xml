@@ -9,19 +9,19 @@ This is the A M S System. There is an active Muster. Please report your status.
         
         <Say voice="alice">
         Press One for AT WORK
-        </Say>
+        </Say>I will pause 10 seconds starting now!</Say>
         <Pause length="2"/>
         <Say voice="alice">
         Press Two for AT HOME
-        </Say>
+        </Say>I will pause 10 seconds starting now!</Say>
         <Pause length="10"/>
         <Say voice="alice">
         Press Three for IN TRANSIT
-        </Say>
+        </Say>I will pause 10 seconds starting now!</Say>
         <Pause length="10"/>
         <Say voice="alice">
         Press Four for OTHER
-        </Say>
+        </Say>I will pause 10 seconds starting now!</Say>
         <Pause length="10"/>
 <Gather timeout="10" finishOnKey="#">
 <Say voice="alice">
