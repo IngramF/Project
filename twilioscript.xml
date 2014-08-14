@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-<Say language="en-US" voice="woman"> 
-  This is the AMS System. There is an active Muster. Please report your status. </Say>
-<Say language="en-US" voice="alice"> Press One for AT WORK </Say>
-<Say language="en-US" voice="alice"> Press Two for AT HOME </Say>
-<Say language="en-US" voice="alice"> Press Three for IN TRANSIT </Say>
-<Say language="en-US" voice="alice"> Press Four for OTHER </Say>
-  <Pause length="5"/>
-<Gather finishOnKey="#" timeout="10">
-  <Say language="en-US" voice="alice"> Please enter your muster status. </Say>
-</Gather>
-<Say language="en-US" voice="alice">Sorry, I didn't get your response.</Say>
-<Redirect method="GET">https://raw.githubusercontent.com/IngramF/Project/master/twilioscript.xml</Redirect>
+    <Say voice="woman" language="fr">Chapeau!</Say>
 </Response>
