@@ -1,34 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-<<<<<<< HEAD
-<Say voice="woman">
-This is the A M S System. There is an active Muster. Please report your status.
-</Say>
-
-
-
-        
-        <Say voice="woman">
-        Press One for AT WORK
-        </Say>I will pause 10 seconds starting now!       Press Two for AT HOME
-        </Say>
-        <Pause length="10"/>
-        <Say voice="woman">
-        Press Three for IN TRANSIT
-        </Say>
-        <Pause length="10"/>
-        <Say voice="woman">
-        Press Four for OTHER
-        </Say>
-        <Pause length="10"/>
-<Gather timeout="10" finishOnKey="#">
-<Say voice="woman">
-Please enter your muster status.        
-</Say>
-</Gather>
-<Say voice="woman"></Say>
-Sorry, I didn't get your response.<Redirect method="GET">https://raw.githubusercontent.com/IngramF/Project/master/twilioscript.xml</Redirect>
-=======
 <Say language="en-US" voice="woman"> 
   This is the AMS System. There is an active Muster. Please report your status. </Say>
 <Say language="en-US" voice="alice"> Press One for AT WORK </Say>
@@ -41,5 +12,4 @@ Sorry, I didn't get your response.<Redirect method="GET">https://raw.githubuserc
 </Gather>
 <Say language="en-US" voice="alice">Sorry, I didn't get your response.</Say>
 <Redirect method="GET">https://raw.githubusercontent.com/IngramF/Project/master/twilioscript.xml</Redirect>
->>>>>>> origin/master
 </Response>
