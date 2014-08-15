@@ -9,6 +9,7 @@ import com.example.models.Person;
 import com.example.models.MusterStatus.StatusCodes;
 
 import javax.net.ssl.SSLEngineResult.Status;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -16,7 +17,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+
+import org.omg.CosNaming.NamingContextExtPackage.InvalidAddress;
 
 @Path("/ams")
 @Produces(MediaType.APPLICATION_JSON)
@@ -44,7 +48,11 @@ public class AMSService {
 	
     @GET
     @Path("/status")
-    public Muster getStatus() {
+    public Muster getStatus(@Context HttpServletRequest req) {
+    	if(!CheckIP(req))
+    	{
+    		return null;
+    	}
     	AMSCore ams = GetAMSCore();
         return ams.GetMusterStatus();
     }
@@ -52,28 +60,40 @@ public class AMSService {
     
     @POST
     @Path("/startmuster")
-    public Muster startMuster(@FormParam("id") int personId, @FormParam("message") String message)
+    public Muster startMuster(@FormParam("id") int personId, @FormParam("message") String message,@Context HttpServletRequest req) 
     {   
+    	if(!CheckIP(req))
+    	{
+    		return null;
+    	}
+	    	AMSCore ams = GetAMSCore();
+	    	Person person = ams.GetPersonByID(personId);
+	    	
+	    	ams.Muster(person, message);
+	    	SaveAMSCore();
+	    	return ams.GetMusterStatus();    	
     	
-    	AMSCore ams = GetAMSCore();
-    	Person person = ams.GetPersonByID(personId);
-    	
-    	ams.Muster(person, message);
-    	SaveAMSCore();
-    	return ams.GetMusterStatus();
-    	
-    	
+    }
+    
+    private boolean CheckIP(HttpServletRequest req)
+    {
+    	String host =req.getRemoteHost();
+    	return(host.equals("198.253.70.51") || host.equals("127.0.0.1") || host.equals("0:0:0:0:0:0:0:1"));    		
     }
     
     @POST
     @Path("/cancelmuster")
-    public Muster cancelMuster(@FormParam("id") int personId)
+    public Muster cancelMuster(@FormParam("id") int personId,@Context HttpServletRequest req)
     {
-    	AMSCore ams = GetAMSCore();
-    	Person person = ams.GetPersonByID(personId);
-    	ams.Cancel(person);
-    	SaveAMSCore();
-    	return ams.GetMusterStatus();
+    	if (!CheckIP(req))
+    	{
+    		return null;
+    	}
+	    	AMSCore ams = GetAMSCore();
+	    	Person person = ams.GetPersonByID(personId);
+	    	ams.Cancel(person);
+	    	SaveAMSCore();
+	    	return ams.GetMusterStatus();    	
     }
 
     
