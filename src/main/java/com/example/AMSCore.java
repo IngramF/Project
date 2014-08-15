@@ -1,5 +1,6 @@
 package com.example;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -70,6 +71,11 @@ public class AMSCore implements IAMSCore {
 		
 		try
 		{
+			File file = new File(fileName);
+			if(!file.isFile())
+			{
+				file.createNewFile();
+			}
 		FileOutputStream fout = new FileOutputStream(fileName);
 	    jw = new JsonWriter(fout);
 	    jw.write(this);
@@ -105,8 +111,9 @@ public class AMSCore implements IAMSCore {
 		    }
 		    catch(Exception e)
 		    {
-		    	e.printStackTrace();
+		    	//e.printStackTrace();
 		    	core = new AMSCore();
+		    	core.Serialize(fileName);
 		    }
 			finally
 			{
