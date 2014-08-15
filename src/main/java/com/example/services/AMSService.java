@@ -93,9 +93,8 @@ public class AMSService {
     			"<Response>\n"+
     			"<Say voice=\"woman\">\n"+
     			"Hello, " + person.getFirstName() + " " + person.getLastName() + "</Say>" +    		
-    			"<Say voice=\"woman\">This is the A M S System. There is an active Muster. </Say><Pause length=\"1\" /> </Say voice=\"woman\">The Muster Message is: "+ ams.GetMusterStatus().getMessage() +" </Say>Please report your status.\n"+
-    			"<Gather timeout=\"10\" finishOnKey=\"#\" numDigits=\"1\" method=\"POST\" action=\"http://sleepy-harbor-5712.herokuapp.com/services/ams/report/"+ id + "\">\n"+
-    			"</Say>\n"+
+    			"<Say voice=\"woman\">This is the A M S System. There is an active Muster. </Say><Pause length=\"1\" /> <Say voice=\"woman\">The Muster Message is: "+ ams.GetMusterStatus().getMessage() +"<Pause length=\"1\">Please report your status.\n</Say>"+
+    			"<Gather timeout=\"10\" finishOnKey=\"#\" numDigits=\"1\" method=\"POST\" action=\"http://sleepy-harbor-5712.herokuapp.com/services/ams/report/"+ id + "\">\n"+    			
     			"        \n"+
     			        "<Say voice=\"woman\">\n"+
     			        "Press One for AT WORK\n"+
