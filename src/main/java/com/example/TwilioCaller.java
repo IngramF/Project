@@ -21,7 +21,7 @@ public class TwilioCaller {
         Map<String, String> callParams = new HashMap<String, String>();
         callParams.put("To", phoneNumber); // Replace with your phone number
         callParams.put("From", "(856) 979-8700"); // Replace with a Twilio number       
-        callParams.put("Url", "http://afternoon-shore-4026.herokuapp.com/services/ams/callscript/" + person.getIdNumber());                
+        callParams.put("Url", "http://sleepy-harbor-5712.herokuapp.com/services/ams/callscript/" + person.getIdNumber());                
         // Make the call
         Call call = callFactory.create(callParams);
         // Print the call SID (a 32 digit hex like CA123..)
