@@ -1,5 +1,7 @@
 package com.example.services;
 
+import java.io.FileReader;
+
 import com.example.AMSCore;
 import com.example.models.Muster;
 import com.example.models.MusterStatus;
@@ -38,6 +40,8 @@ public class AMSService {
 	}
 	
 	private static String fileName = "ams.dat";
+	
+	
     @GET
     @Path("/status")
     public Muster getStatus() {
@@ -72,9 +76,58 @@ public class AMSService {
     	return ams.GetMusterStatus();
     }
 
+    
+    @POST
+    @Path("/callscript/{id}")
+    @Produces("application/xml")
+    public String GetCallScript(@PathParam("id") int id)
+    {
+    	AMSCore ams = GetAMSCore();
+    	Person person = ams.GetPersonByID(id);
+    	
+    	if(person == null)
+    	{
+    		return "<Response><Say>Employee not found -- An Error has Occured</Say></Response>";
+    	}
+    	String script = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
+    			"<Response>\n"+
+    			"<Say voice=\"woman\">\n"+
+    			"Hello, " + person.getFirstName() + " " + person.getLastName() + "</Say>" +    		
+    			"<Say voice=\"woman\">This is the A M S System. There is an active Muster. Please report your status.\n"+
+    			"</Say>\n"+
+    			"        \n"+
+    			        "<Say voice=\"woman\">\n"+
+    			        "Press One for AT WORK\n"+
+    			        "</Say>\n"+
+    			        "<Pause length=\"2\"/>\n"+
+    			        "<Say voice=\"woman\">\n"+
+    			        "Press Two for AT HOME\n"+
+    			        "</Say>\n"+
+    			        "<Pause length=\"10\"/>\n"+
+    			        "<Say voice=\"woman\">\n"+
+    			        "Press Three for IN TRANSIT\n"+
+    			        "</Say>\n"+
+    			        "<Pause length=\"10\"/>\n"+
+    			        "<Say voice=\"woman\">\n"+
+    			        "Press Four for OTHER\n"+
+    			        "</Say>\n"+
+    			        "<Pause length=\"10\"/>\n"+
+    			"<Gather timeout=\"10\" finishOnKey=\"#\" numDigits=\"1\" method=\"POST\" action=\"/services/ams/report/"+ id + "\">\n"+
+    			"<Say voice=\"woman\">\n"+
+    			"Please enter your muster status.        \n"+
+    			"</Say>\n"+
+    			"</Gather>\n"+
+    			"<Say voice=\"woman\">Sorry, I didn't get your response.</Say>\n"+
+    			"<Redirect method=\"POST\">/services/ams/callscript/"+ id + "</Redirect>\n"+
+    			"</Response>\n";
+    	return script;
+    	
+    	
+    }
+    
     @PUT
-    @Path("/report")
-    public MusterStatus reportIn(@FormParam("id") int employeeID, @FormParam("status") int statusIntValue)
+    @Path("/report/{id}")
+    public MusterStatus reportIn(@PathParam("id") int employeeID, @FormParam("status") int statusIntValue)
     {
     	AMSCore ams = GetAMSCore();
     

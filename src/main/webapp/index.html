@@ -104,12 +104,11 @@
 
         	function SendReportInRequest() {
 			var postData = 
-			{
-				id:$("#reportinID").val(),
+			{				
 				message:$("#reportinStatus").val()
 			};
             $.ajax({
-                url:'/services/ams/report',
+                url:'/services/ams/report/' + $("#reportinID").val(),
                 dataType:'json',
                 data: postData,
                 type:'PUT',

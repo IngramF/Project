@@ -51,7 +51,7 @@ public class AMSCore implements IAMSCore {
     	employeeList.add(new Person("Johnny", "James", 14, true ));
     	employeeList.add(new Person("Micheal", "Upshaw",-99,false));
     	Person matt = new Person("Matt","G",101,true);
-    	Phone phone = new Phone("(215) 214-8118");
+    	Phone phone = new Phone("(856) 492-1273");
     	matt.getPhoneNumbers().add(phone);
     	employeeList.add(matt);
     	
@@ -156,7 +156,7 @@ public class AMSCore implements IAMSCore {
 			{
 				System.out.println("Calling " + phone.getPhoneNumber());
 				try {
-					TwilioCaller.MakeCall(phone.getPhoneNumber(), this.GetMusterStatus());
+					TwilioCaller.MakeCall(phone.getPhoneNumber(), this.GetMusterStatus(),emp);
 				} catch (TwilioRestException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
