@@ -43,7 +43,7 @@ public class AMSCoreTest {
     	//	System.out.println(pp);
     	
     	
-    	core = new AMSCore(employeeList);
+    	core = new AMSCore();
     	return core;
 	}
 	
@@ -60,7 +60,7 @@ public class AMSCoreTest {
 			
 			AMSCore core = Setup();
 			DoMuster(core);
-			Person sampleBoss = core.GetPersonByID(9);
+			Person sampleBoss = core.GetPersonByID(3);
 			System.out.println("Canceling current Muster");
 			core.Cancel(sampleBoss);
 			Muster muster = core.GetMusterStatus();		
@@ -77,7 +77,7 @@ public class AMSCoreTest {
 		}
 
 		private void DoMuster(AMSCore core) {
-			Person samplePerson = core.GetPersonByID(999);
+			Person samplePerson = core.GetPersonByID(3);
 			core.Muster(samplePerson, "Please Report Your Status.");
 	    	Muster muster = core.GetMusterStatus();
 		}
@@ -101,7 +101,7 @@ public class AMSCoreTest {
 		AMSCore core = Setup();
 		//Make sure the size is what we expect
 		core.GetPeople().size();
-		assertEquals(12,core.GetPeople().size());
+		assertEquals(11,core.GetPeople().size());
 		
 		
 	}
@@ -120,7 +120,7 @@ public class AMSCoreTest {
 		//check the date is the same
 		assertEquals(when.getDay(),now.getDay());
 		assertEquals(when.getYear(),now.getYear());
-		Person samplePerson = core.GetPersonByID(999);
+		Person samplePerson = core.GetPersonByID(3);
 		Muster muster = core.GetMusterStatus();
 		assertEquals(samplePerson,muster.getWho());
 		assertEquals(muster.isActive(),true);

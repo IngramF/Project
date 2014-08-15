@@ -130,11 +130,11 @@ public class AMSCore implements IAMSCore {
 		
 		
 		if (person == null) {
-			throw new IllegalArgumentException("Muster is not null");
+			throw new IllegalArgumentException("Person is null");
 		}
 
 		if (!person.isSupervisor()) {
-			throw new IllegalArgumentException("The person is a supervisor");
+			throw new IllegalArgumentException("The person is not a supervisor");
 		}
 
 		if (message == null || message == "") {
