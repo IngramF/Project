@@ -2,6 +2,7 @@
  * 
  */
 package com.example.models;
+import com.example.models.Phone;
 
 
 import java.util.ArrayList;

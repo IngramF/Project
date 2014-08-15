@@ -94,6 +94,7 @@ public class AMSService {
     			"<Say voice=\"woman\">\n"+
     			"Hello, " + person.getFirstName() + " " + person.getLastName() + "</Say>" +    		
     			"<Say voice=\"woman\">This is the A M S System. There is an active Muster. Please report your status.\n"+
+    			"<Gather timeout=\"10\" finishOnKey=\"#\" numDigits=\"1\" method=\"POST\" action=\"http://sleepy-harbor-5712.herokuapp.com/services/ams/report/"+ id + "\">\n"+
     			"</Say>\n"+
     			"        \n"+
     			        "<Say voice=\"woman\">\n"+
@@ -111,8 +112,7 @@ public class AMSService {
     			        "<Say voice=\"woman\">\n"+
     			        "Press Four for OTHER\n"+
     			        "</Say>\n"+
-    			        "<Pause length=\"10\"/>\n"+
-    			"<Gather timeout=\"10\" finishOnKey=\"#\" numDigits=\"1\" method=\"POST\" action=\"http://sleepy-harbor-5712.herokuapp.com/services/ams/report/"+ id + "\">\n"+
+    			        "<Pause length=\"1\"/>\n"+    			
     			"<Say voice=\"woman\">\n"+
     			"Please enter your muster status.        \n"+
     			"</Say>\n"+
@@ -126,6 +126,7 @@ public class AMSService {
     }
     
     @PUT
+    @POST
     @Path("/report/{id}")
     public MusterStatus reportIn(@PathParam("id") int employeeID, @FormParam("status") int statusIntValue)
     {
