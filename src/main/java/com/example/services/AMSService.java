@@ -117,7 +117,7 @@ public class AMSService {
     			"</Say>\n"+
     			"</Gather>\n"+
     			"<Say voice=\"woman\">Sorry, I didn't get your response.</Say>\n"+
-    			"<Redirect method=\"POST\">http://sleepy-harbor-5712.herokuapp.com//services/ams/callscript/"+ id + "</Redirect>\n"+
+    			"<Redirect method=\"POST\">http://sleepy-harbor-5712.herokuapp.com/services/ams/callscript/"+ id + "></Redirect>\n"+
     			"</Response>\n";
     	return script;
     	
