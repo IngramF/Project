@@ -99,20 +99,20 @@ public class AMSService {
     			        "<Say voice=\"woman\">\n"+
     			        "Press One for AT WORK\n"+
     			        "</Say>\n"+
-    			        "<Pause length=\"2\"/>\n"+
+    			        "<Pause length=\"1\"/>\n"+
     			        "<Say voice=\"woman\">\n"+
     			        "Press Two for AT HOME\n"+
-    			        "</Say>\n"+
-    			        "<Pause length=\"10\"/>\n"+
+    			        "</Say>\n"+    			        
+    			        "<Pause length=\"1\"/>\n"+
     			        "<Say voice=\"woman\">\n"+
     			        "Press Three for IN TRANSIT\n"+
     			        "</Say>\n"+
-    			        "<Pause length=\"10\"/>\n"+
+    			        "<Pause length=\"1\"/>\n"+
     			        "<Say voice=\"woman\">\n"+
     			        "Press Four for OTHER\n"+
     			        "</Say>\n"+
     			        "<Pause length=\"10\"/>\n"+
-    			"<Gather timeout=\"10\" finishOnKey=\"#\" numDigits=\"1\" method=\"POST\" action=\"/services/ams/report/"+ id + "\">\n"+
+    			"<Gather timeout=\"10\" finishOnKey=\"#\" numDigits=\"1\" method=\"POST\" action=\"http://sleepy-harbor-5712.herokuapp.com/services/ams/report/"+ id + "\">\n"+
     			"<Say voice=\"woman\">\n"+
     			"Please enter your muster status.        \n"+
     			"</Say>\n"+
