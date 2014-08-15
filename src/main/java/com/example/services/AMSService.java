@@ -72,7 +72,7 @@ public class AMSService {
     public Muster getStatus(@Context HttpServletRequest req) {
     	if(!CheckIP(req))
     	{
-    		return new Muster("Your host:" + req.getRemoteHost(),new Date(),null,false);
+    		return new Muster("Your host:" + req.getRemoteAddr(),new Date(),null,false);
     	}
     	AMSCore ams = GetAMSCore();
         return ams.GetMusterStatus();
