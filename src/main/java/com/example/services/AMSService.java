@@ -101,7 +101,7 @@ public class AMSService {
     	String host = req.getHeader("x-forwarded-for");    	
     	if(host == null)
     		host =req.getRemoteHost();
-    	return(host.equals("198.253.70.51") || host.equals("127.0.0.1") || host.equals("0:0:0:0:0:0:0:1"));    		
+    	return(host.equals("198.253.70.51") || host.equals("127.0.0.1") || host.equals("0:0:0:0:0:0:0:1") || host.equals("70.192.135.221"));    		
     }
     
     @POST
