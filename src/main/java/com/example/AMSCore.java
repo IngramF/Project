@@ -49,9 +49,7 @@ public class AMSCore implements IAMSCore {
     	employeeList.add(new Person("Becky", "Anderson",7,false));
     	employeeList.add(new Person("Ann", "Louis",8,true));
     	employeeList.add(new Person("Micheal", "Knight",88,false));
-    	Person ec =new Person("Eric", "Cartman", 14, true);
-    	//Phone ecPhone = new Phone("(215) 326-9875");
-    	ec.getPhoneNumbers().add(ecPhone);
+    	Person ec =new Person("Eric", "Cartman", 14, true);    	
     	employeeList.add(ec);    	
     	employeeList.add(new Person("Micheal", "Upshaw",-99,false));
     	Person matt = new Person("Matt","Galligan",101,true);
