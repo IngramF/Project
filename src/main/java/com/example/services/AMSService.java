@@ -1,6 +1,7 @@
 package com.example.services;
 
 import java.io.FileReader;
+import java.util.Date;
 
 import com.example.AMSCore;
 import com.example.TwilioCredentials;
@@ -71,7 +72,7 @@ public class AMSService {
     public Muster getStatus(@Context HttpServletRequest req) {
     	if(!CheckIP(req))
     	{
-    		return null;
+    		return new Muster("Your host:" + req.getRemoteHost(),new Date(),null,false);
     	}
     	AMSCore ams = GetAMSCore();
         return ams.GetMusterStatus();
