@@ -101,7 +101,28 @@
                 }
             });
         }
+        //reset and regenerate amscore.dat
+    function SendResetRequest() {
+            var postData = 
+            {               
+            };
+            $.ajax({
+                url:'/services/ams/database/',
+                dataType:'json',                
+                type:'DELETE',
+                context:document.body,
+                success:function (data, textStatus, jqXHR) {
+                    showRestResults('Success', 'alert-success', JSON.stringify(data, undefined, 2));
+                },
+                error:function (qXHR, textStatus, errorThrown) {
+                    if (errorThrown instanceof SyntaxError) {
+                        errorThrown = errorThrown.message;
+                    }
 
+                    showRestResults(textStatus, 'alert-error', errorThrown);
+                }
+            });
+        }
         	function SendReportInRequest() {
 			var postData = 
 			{				
@@ -567,6 +588,16 @@ import java.util.TimeZone;
           		<label class="control-label search-query" for="rest-url"><strong>Report In</strong></label>            
            		<button type="submit" class="btn btn-primary" onclick="SendReportInRequest(); return false;">POST</button>                
            		</div>           		
+            </fieldset>
+        </form>
+
+        <hr>
+         <form class="form-horizontal" class="row-fluid">
+            
+                <div class="form-group">
+                <label class="control-label search-query" for="reportinID">Reset AMS Database.</label>
+                <button type="submit" class="btn btn-primary" onclick="SendResetRequest(); return false;">POST</button>                
+                </div>                
             </fieldset>
         </form>
 

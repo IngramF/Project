@@ -10,6 +10,7 @@ import com.example.models.MusterStatus.StatusCodes;
 
 import javax.net.ssl.SSLEngineResult.Status;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -44,6 +45,24 @@ public class AMSService {
 	}
 	
 	private static String fileName = "ams.dat";
+	
+	
+	/***
+	 * Delete the AMS database and create a new one.
+	 * @param req
+	 * @return
+	 */
+	@DELETE
+	@Path("/database")
+	public boolean RegenerateDatabase(@Context HttpServletRequest req){
+		if(!CheckIP(req))
+		{
+			return false;
+		}
+		ams = new AMSCore();
+		SaveAMSCore();
+		return true;
+	}
 	
 	
     @GET
