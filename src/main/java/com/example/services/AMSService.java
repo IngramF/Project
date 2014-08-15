@@ -124,8 +124,7 @@ public class AMSService {
     	
     	
     }
-    
-    @PUT
+        
     @POST
     @Path("/report/{id}")
     public MusterStatus reportIn(@PathParam("id") int employeeID, @FormParam("status") int statusIntValue)
