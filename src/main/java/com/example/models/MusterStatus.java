@@ -24,7 +24,7 @@ public class MusterStatus {
 	{
 		WORK(0),
 		HOME(1),
-		TRAVEL(2),
+		TDY(2),
 		OTHER(3);
 		
 		private final int value;
