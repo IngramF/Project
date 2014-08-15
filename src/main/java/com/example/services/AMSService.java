@@ -1,5 +1,7 @@
 package com.example.services;
 
+import java.io.FileReader;
+
 import com.example.AMSCore;
 import com.example.models.Muster;
 import com.example.models.MusterStatus;
@@ -38,6 +40,8 @@ public class AMSService {
 	}
 	
 	private static String fileName = "ams.dat";
+	
+	
     @GET
     @Path("/status")
     public Muster getStatus() {
@@ -46,11 +50,11 @@ public class AMSService {
     }
 
     
-    
     @POST
     @Path("/startmuster")
     public Muster startMuster(@FormParam("id") int personId, @FormParam("message") String message)
     {   
+    	
     	AMSCore ams = GetAMSCore();
     	Person person = ams.GetPersonByID(personId);
     	
@@ -72,9 +76,58 @@ public class AMSService {
     	return ams.GetMusterStatus();
     }
 
-    @PUT
-    @Path("/report")
-    public MusterStatus reportIn(@FormParam("id") int employeeID, @FormParam("status") int statusIntValue)
+    
+    @POST
+    @Path("/callscript/{id}")
+    @Produces("application/xml")
+    public String GetCallScript(@PathParam("id") int id)
+    {
+    	AMSCore ams = GetAMSCore();
+    	Person person = ams.GetPersonByID(id);
+    	
+    	if(person == null)
+    	{
+    		return "<Response><Say>Employee not found -- An Error has Occured</Say></Response>";
+    	}
+    	String script = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+
+    			"<Response>\n"+
+    			"<Say voice=\"woman\">\n"+
+    			"Hello, " + person.getFirstName() + " " + person.getLastName() + "</Say>" +    		
+    			"<Say voice=\"woman\">This is the A M S System. There is an active Muster. </Say><Pause length=\"1\" /> <Say voice=\"woman\">The Muster Message is: "+ ams.GetMusterStatus().getMessage() +"<Pause length=\"1\" />Please report your status.\n</Say>"+
+    			"<Gather timeout=\"10\" finishOnKey=\"#\" numDigits=\"1\" method=\"POST\" action=\"http://sleepy-harbor-5712.herokuapp.com/services/ams/report/"+ id + "\">\n"+    			
+    			"        \n"+
+    			        "<Say voice=\"woman\">\n"+
+    			        "Press One for AT WORK\n"+
+    			        "</Say>\n"+
+    			        "<Pause length=\"1\"/>\n"+
+    			        "<Say voice=\"woman\">\n"+
+    			        "Press Two for AT HOME\n"+
+    			        "</Say>\n"+    			        
+    			        "<Pause length=\"1\"/>\n"+
+    			        "<Say voice=\"woman\">\n"+
+    			        "Press Three for IN TRANSIT\n"+
+    			        "</Say>\n"+
+    			        "<Pause length=\"1\"/>\n"+
+    			        "<Say voice=\"woman\">\n"+
+    			        "Press Four for OTHER\n"+
+    			        "</Say>\n"+
+    			        "<Pause length=\"1\"/>\n"+    			
+    			"<Say voice=\"woman\">\n"+
+    			"Please enter your muster status.        \n"+
+    			"</Say>\n"+
+    			"</Gather>\n"+
+    			"<Say voice=\"woman\">Sorry, I didn't get your response.</Say>\n"+
+    			"<Redirect method=\"POST\">http://sleepy-harbor-5712.herokuapp.com/services/ams/callscript/"+ id + "></Redirect>\n"+
+    			"</Response>\n";
+    	return script;
+    	
+    	
+    }
+        
+    @POST
+    @Path("/report/{id}")
+    @Produces("application/xml")
+    public String reportIn(@PathParam("id") int employeeID, @FormParam("Digits") int statusIntValue)
     {
     	AMSCore ams = GetAMSCore();
     
@@ -100,7 +153,7 @@ public class AMSService {
     	ams.ReportIn(musterStatus);
     	SaveAMSCore();
     	
-    	return musterStatus;
+    	return "<Response><Say voice=\"woman\">Thank you. Your response has been saved.</Say></Response>";
     
     }
     

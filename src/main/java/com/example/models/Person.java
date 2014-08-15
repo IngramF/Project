@@ -2,9 +2,8 @@
  * 
  */
 package com.example.models;
+import com.example.models.Phone;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
 

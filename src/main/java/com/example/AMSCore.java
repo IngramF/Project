@@ -1,5 +1,6 @@
 package com.example;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -48,10 +49,11 @@ public class AMSCore implements IAMSCore {
     	employeeList.add(new Person("Becky", "Anderson",7,false));
     	employeeList.add(new Person("Ann", "Louis",8,true));
     	employeeList.add(new Person("Micheal", "Knight",88,false));
-    	employeeList.add(new Person("Johnny", "James", 14, true ));
+    	Person ec =new Person("Eric", "Cartman", 14, true);    	
+    	employeeList.add(ec);    	
     	employeeList.add(new Person("Micheal", "Upshaw",-99,false));
-    	Person matt = new Person("Matt","G",101,true);
-    	Phone phone = new Phone("(215) 214-8118");
+    	Person matt = new Person("Matt","Galligan",101,true);
+    	Phone phone = new Phone("(856) 492-1273");
     	matt.getPhoneNumbers().add(phone);
     	employeeList.add(matt);
     	
@@ -70,6 +72,11 @@ public class AMSCore implements IAMSCore {
 		
 		try
 		{
+			File file = new File(fileName);
+			if(!file.isFile())
+			{
+				file.createNewFile();
+			}
 		FileOutputStream fout = new FileOutputStream(fileName);
 	    jw = new JsonWriter(fout);
 	    jw.write(this);
@@ -105,8 +112,9 @@ public class AMSCore implements IAMSCore {
 		    }
 		    catch(Exception e)
 		    {
-		    	e.printStackTrace();
+		    	//e.printStackTrace();
 		    	core = new AMSCore();
+		    	core.Serialize(fileName);
 		    }
 			finally
 			{
@@ -130,11 +138,11 @@ public class AMSCore implements IAMSCore {
 		
 		
 		if (person == null) {
-			throw new IllegalArgumentException("Muster is not null");
+			throw new IllegalArgumentException("Person is null");
 		}
 
 		if (!person.isSupervisor()) {
-			throw new IllegalArgumentException("The person is a supervisor");
+			throw new IllegalArgumentException("The person is not a supervisor");
 		}
 
 		if (message == null || message == "") {
@@ -156,7 +164,7 @@ public class AMSCore implements IAMSCore {
 			{
 				System.out.println("Calling " + phone.getPhoneNumber());
 				try {
-					TwilioCaller.MakeCall(phone.getPhoneNumber(), this.GetMusterStatus());
+					TwilioCaller.MakeCall(phone.getPhoneNumber(), this.GetMusterStatus(),emp);
 				} catch (TwilioRestException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
