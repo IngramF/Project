@@ -127,7 +127,7 @@ public class AMSService {
     @POST
     @Path("/report/{id}")
     @Produces("application/xml")
-    public String reportIn(@PathParam("id") int employeeID, @FormParam("digits") int statusIntValue)
+    public String reportIn(@PathParam("id") int employeeID, @FormParam("Digits") int statusIntValue)
     {
     	AMSCore ams = GetAMSCore();
     
