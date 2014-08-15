@@ -22,10 +22,10 @@ public class MusterStatus {
 	 */
 	public enum StatusCodes
 	{
-		WORK(0),
-		HOME(1),
-		TDY(2),
-		OTHER(3);
+		WORK(1),
+		HOME(2),
+		TDY(3),
+		OTHER(4);
 		
 		private final int value;
 		

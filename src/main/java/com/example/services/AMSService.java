@@ -50,11 +50,11 @@ public class AMSService {
     }
 
     
-    
     @POST
     @Path("/startmuster")
     public Muster startMuster(@FormParam("id") int personId, @FormParam("message") String message)
     {   
+    	
     	AMSCore ams = GetAMSCore();
     	Person person = ams.GetPersonByID(personId);
     	
