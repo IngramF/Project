@@ -117,7 +117,7 @@ public class AMSService {
     			"</Say>\n"+
     			"</Gather>\n"+
     			"<Say voice=\"woman\">Sorry, I didn't get your response.</Say>\n"+
-    			"<Redirect method=\"POST\">/services/ams/callscript/"+ id + "</Redirect>\n"+
+    			"<Redirect method=\"POST\">http://sleepy-harbor-5712.herokuapp.com//services/ams/callscript/"+ id + "</Redirect>\n"+
     			"</Response>\n";
     	return script;
     	
@@ -126,7 +126,7 @@ public class AMSService {
         
     @POST
     @Path("/report/{id}")
-    public MusterStatus reportIn(@PathParam("id") int employeeID, @FormParam("status") int statusIntValue)
+    public String reportIn(@PathParam("id") int employeeID, @FormParam("status") int statusIntValue)
     {
     	AMSCore ams = GetAMSCore();
     
@@ -152,7 +152,7 @@ public class AMSService {
     	ams.ReportIn(musterStatus);
     	SaveAMSCore();
     	
-    	return musterStatus;
+    	return "<Response><Say voice=\"woman\">Thank you. Your response has been saved.</Say></Response>";
     
     }
     
