@@ -3,6 +3,7 @@ package com.example.services;
 import java.io.FileReader;
 
 import com.example.AMSCore;
+import com.example.TwilioCredentials;
 import com.example.models.Muster;
 import com.example.models.MusterStatus;
 import com.example.models.Person;
@@ -133,7 +134,7 @@ public class AMSService {
     			"<Say voice=\"woman\">\n"+
     			"Hello, " + person.getFirstName() + " " + person.getLastName() + "</Say>" +    		
     			"<Say voice=\"woman\">This is the A M S System. There is an active Muster. </Say><Pause length=\"1\" /> <Say voice=\"woman\">The Muster Message is: "+ ams.GetMusterStatus().getMessage() +"<Pause length=\"1\" />Please report your status.\n</Say>"+
-    			"<Gather timeout=\"10\" finishOnKey=\"#\" numDigits=\"1\" method=\"POST\" action=\"http://sleepy-harbor-5712.herokuapp.com/services/ams/report/"+ id + "\">\n"+    			
+    			"<Gather timeout=\"10\" finishOnKey=\"#\" numDigits=\"1\" method=\"POST\" action=\"http://"+TwilioCredentials.GetHerokuAppName()+".herokuapp.com/services/ams/report/"+ id + "\">\n"+    			
     			"        \n"+
     			        "<Say voice=\"woman\">\n"+
     			        "Press One for AT WORK\n"+
@@ -156,7 +157,7 @@ public class AMSService {
     			"</Say>\n"+
     			"</Gather>\n"+
     			"<Say voice=\"woman\">Sorry, I didn't get your response.</Say>\n"+
-    			"<Redirect method=\"POST\">http://sleepy-harbor-5712.herokuapp.com/services/ams/callscript/"+ id + "></Redirect>\n"+
+    			"<Redirect method=\"POST\">http://"+TwilioCredentials.GetHerokuAppName()+".herokuapp.com/services/ams/callscript/"+ id + "></Redirect>\n"+
     			"</Response>\n";
     	return script;
     	

@@ -25,7 +25,18 @@ public class TwilioCredentials {
 		return envVal;
 	}
 	
+	public static String GetHerokuAppName()
+	{
+		String envVal = System.getenv("HEROKU_NAME");
+		if(envVal == null)
+		{
+			return TwilioCredentials.HEROKU_NAME;
+		}
+		return envVal;
+	}
+	
 	
 	public static final String ACCOUNT_SID = "";
-	public static final String AUTH_TOKEN = "";	
+	public static final String AUTH_TOKEN = "";
+	public static final String HEROKU_NAME = "";
 }
