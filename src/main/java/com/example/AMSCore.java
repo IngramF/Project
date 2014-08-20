@@ -52,11 +52,11 @@ public class AMSCore implements IAMSCore {
     	Person ec =new Person("Eric", "Cartman", 14, true);    	
     	employeeList.add(ec);    	
     	employeeList.add(new Person("Micheal", "Upshaw",-99,false));
-    	Person matt = new Person("Matt","Galligan",101,true);
-    	Phone phone = new Phone("(856) 492-1273");
-    	matt.getPhoneNumbers().add(phone);
-    	employeeList.add(matt);
-    	
+    	//Person matt = new Person("Matt","Galligan",101,true);
+    	//Phone phone = new Phone("(856) 492-1273");
+    	//matt.getPhoneNumbers().add(phone);
+    	//employeeList.add(matt);
+    	Phone phone = new Phone("(215)-214-8118");
 		currentMuster = new Muster("No Muster", new Date(),null ,false);
 	}
 	
