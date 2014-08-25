@@ -25,6 +25,9 @@
 "Please enter your muster status.        \n"+
 "</Say>\n"+
 "</Gather>\n"+
+"<Response>\n"+
+"<Say voice=\"woman\">\n"+
+"If you are a supervisor Press Seven to a recieve status.\n"+
 "<Say voice=\"woman\">Sorry, I didn't get your response.</Say>\n"+
 "<Redirect method=\"GET\">https://raw.githubusercontent.com/IngramF/Project/master/twilioscript.xml</Redirect>\n"+
 "</Response>\n"
