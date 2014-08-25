@@ -19,7 +19,10 @@
         "<Say voice=\"woman\">\n"+
         "Press Four for OTHER\n"+
         "</Say>\n"+
+        <Pause length=\"10\"/>\n"+
+        "<Say voice=\"woman\">\n"+
         "If you are a supervisor Press Seven for a status update.\n"+
+         "</Say>\n"+
         "<Pause length=\"10\"/>\n"+
 "<Gather timeout=\"10\" finishOnKey=\"#\">\n"+
 "<Say voice=\"woman\">\n"+
