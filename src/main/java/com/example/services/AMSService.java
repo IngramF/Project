@@ -154,7 +154,8 @@ public class AMSService {
     			        "<Say voice=\"woman\">\n"+
     			        "Press Four for OTHER\n"+
     			        "</Say>\n"+
-    			        "<Pause length=\"1\"/>\n"+    			
+    			        "<Pause length=\"1\"/>\n"+
+    			        "<Say voice=\"woman\">\n"+		
     			"<Say voice=\"woman\">\n"+
     			"Please enter your muster status.        \n"+
     			"</Say>\n"+
