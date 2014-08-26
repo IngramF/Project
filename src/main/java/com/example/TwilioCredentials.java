@@ -36,8 +36,8 @@ public class TwilioCredentials {
 	}
 	
 	
-	public static final String ACCOUNT_SID = "AC07227aa5e22a0340507aebffdcd00947";
-	public static final String AUTH_TOKEN = "9990db83d953e960ff2de4834a70f0fb";
-	public static final String HEROKU_NAME = "aqueous-cliffs-6614";
+	public static final String ACCOUNT_SID = "";
+	public static final String AUTH_TOKEN = "";
+	public static final String HEROKU_NAME = "";
 }
 
